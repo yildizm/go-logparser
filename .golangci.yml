@@ -1,0 +1,173 @@
+version: "2"
+
+run:
+  timeout: 5m
+  go: "1.22"
+
+linters:
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - canonicalheader
+    - containedctx
+    - contextcheck
+    - copyloopvar
+    - decorder
+    - depguard
+    - dogsled
+    - dupl
+    - dupword
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - exhaustive
+    - exptostd
+    - forcetypeassert
+    - funcorder
+    - funlen
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - gochecksumtype
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godox
+    - goheader
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - govet
+    - iface
+    - importas
+    - ineffassign
+    - interfacebloat
+    - intrange
+    - ireturn
+    - lll
+    - loggercheck
+    - maintidx
+    - makezero
+    - mirror
+    - misspell
+    - mnd
+    - musttag
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnesserr
+    - nilnil
+    - noctx
+    - nolintlint
+    - nosprintfhostport
+    - perfsprint
+    - prealloc
+    - predeclared
+    - protogetter
+    - reassign
+    - recvcheck
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - tagliatelle
+    - testableexamples
+    - testifylint
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - usetesting
+    - wastedassign
+    - whitespace
+    - wsl
+  settings:
+    errcheck:
+      check-type-assertions: false
+      check-blank: false
+
+    gocyclo:
+      min-complexity: 15
+
+    depguard:
+      rules:
+        Main:
+          files:
+            - "!**/examples/**"
+          deny:
+            - pkg: "github.com/yildizm/go-logparser"
+              desc: "should not import own package"
+
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - experimental
+        - opinionated
+        - performance
+        - style
+      disabled-checks:
+        - dupImport # https://github.com/go-critic/go-critic/issues/845
+        - ifElseChain
+        - octalLiteral
+        - whyNoLint
+        - wrapperFunc
+
+    dupl:
+      threshold: 100
+
+    lll:
+      line-length: 140
+
+    misspell:
+      locale: US
+
+    nolintlint:
+      allow-unused: false 
+      require-explanation: false 
+      require-specific: false
+
+    ireturn:
+      allow:
+        - anon
+        - error
+        - empty
+        - stdlib
+        - (or|er)$  # Allow interfaces ending with "or" or "er" (like Parser)
+
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - goconst
+          - dupl
+          - lll
+          - gocyclo
+          - errcheck
+          - gosec
+      - path: parser.go
+        linters:
+          - ireturn  # Allow interface returns for public API
+
+formatters:
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/yildizm/go-logparser
+
+issues:
+  max-issues-per-linter: 50
+  max-same-issues: 3

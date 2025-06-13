@@ -1,0 +1,12 @@
+level=info msg="Request processed" duration=45ms endpoint="/api/users" status=200
+level=warn msg="Slow query detected" duration=1250ms query="SELECT * FROM orders WHERE created_at > ?"
+level=info msg="Cache miss" key="user:12345" duration=15ms
+level=warn msg="High response time" duration=2500ms endpoint="/api/reports" status=200
+level=error msg="Query timeout" duration=30000ms query="SELECT COUNT(*) FROM transactions"
+level=info msg="Background job completed" duration=125ms job="email_notifications"
+level=warn msg="Memory usage high" usage=92% threshold=90%
+level=error msg="GC overhead limit exceeded" gc_time=5000ms heap_size=2GB
+level=warn msg="Connection pool exhausted" active_connections=100 max_connections=100
+level=info msg="Request processed" duration=1200ms endpoint="/api/analytics" status=200
+level=error msg="Slow response time detected" duration=5000ms endpoint="/api/search"
+level=warn msg="Database connection taking too long" duration=3000ms host="db.example.com"

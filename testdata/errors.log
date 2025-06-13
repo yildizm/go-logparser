@@ -1,0 +1,10 @@
+{"timestamp":"2024-01-15T10:00:00Z","level":"error","message":"Database connection failed","service":"api","error":"connection timeout"}
+{"timestamp":"2024-01-15T10:00:30Z","level":"error","message":"NullPointerException in UserService.validateUser()","service":"api","stack_trace":"java.lang.NullPointerException"}
+{"timestamp":"2024-01-15T10:01:00Z","level":"error","message":"Authentication failed: invalid credentials","service":"auth","user_id":"12345"}
+{"timestamp":"2024-01-15T10:01:15Z","level":"error","message":"SQL injection attempt detected","service":"api","query":"'; DROP TABLE users; --"}
+{"timestamp":"2024-01-15T10:01:30Z","level":"error","message":"Out of memory error","service":"worker","heap_size":"2GB"}
+{"timestamp":"2024-01-15T10:02:00Z","level":"error","message":"Service unavailable: downstream timeout","service":"gateway","downstream":"payment-service"}
+{"timestamp":"2024-01-15T10:02:30Z","level":"error","message":"Configuration error: missing required field 'database.url'","service":"api"}
+{"timestamp":"2024-01-15T10:03:00Z","level":"error","message":"Disk full: no space left on device","service":"logger","disk_usage":"100%"}
+{"timestamp":"2024-01-15T10:03:30Z","level":"error","message":"Network timeout: read timeout after 30s","service":"http-client"}
+{"timestamp":"2024-01-15T10:04:00Z","level":"error","message":"Multiple cascading failures detected","service":"monitor"}
